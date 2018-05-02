@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Departments</h1>
+<br>
+<a href="/employee_data">Back</a>
+<br><br>
+
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>Department Number</th>
+        <th>Department Name</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for department in departments %}
+    <tr>
+        <td>{{ department.dept_no }}</td>
+        <td>{{ department.dept_name }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if current_user.is_authenticated %}
+
+
+    <div class="col-sm-6">
+        <h3>Continuous Integration</h3>
+        <a href="https://dev-946746.oktapreview.com/home/jenkins/0oaeupydz2IU09sMW0h7/12273">Jenkins</a>
+        <br><br>
+
+        <h3>Code Repository</h3>
+        <a href="https://github.com/orgs/bondsboys/sso">GitHub Organization</a>
+        <br><br>
+
+        <h3>MySQL</h3>
+        <a href="/employee_data">Employees</a>
+        <br><br>
+
+        <h3>CRM</h3>
+        <a href="https://dev-946746.oktapreview.com/home/salesforce/0oaeuptn5miHoI8460h7/24">Salesforce</a>
+        <br><br>
+
+        <h3>Social</h3>
+        <a href="https://dev-946746.oktapreview.com/home/twitter/0oaeupt12jT0boE0c0h7/150">Twitter</a>
+        <br><br>
+        <a href="https://dev-946746.oktapreview.com/home/googleaccounts/0oaeupth0ayNdc4XT0h7/480">Google</a>
+        <br><br>
+        <a href="https://dev-946746.oktapreview.com/home/facebook/0oaeuptoeadeIE8HD0h7/149">Facebook</a>
+        <br><br>
+    </div>
+
+    <div class="col-sm-6">
+        <h1>Logged in</h1>
+        <br>
+            <table class="table">
+                {% if session.saml_attributes %}
+                {% for attribute in session.saml_attributes.keys() %}
+                <tr>
+                    <td>{{ attribute }}</td>
+                    <td>{{ session.saml_attributes[attribute][0] }}</td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </table>
+    </div>
+
+{% else %}
+<br><br>
+<a href="/saml/login/example-okta-com">
+    <div class="btn btn-primary btn-lg" style="padding: 10px 30px;">Log In</div>
+</a>
+{% endif %}
+{% endblock %}

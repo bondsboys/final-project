@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Salaries</h1>
+<br>
+<a href="/employee_data">Back</a>
+<br><br>
+
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>Employee Number</th>
+        <th>Salary</th>
+        <th>From Date</th>
+        <th>To Date</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for salalry in salaries %}
+    <tr>
+        <td>{{ salalry.emp_no }}</td>
+        <td>{{ salalry.salary }}</td>
+        <td>{{ salalry.from_date }}</td>
+        <td>{{ salalry.to_date }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

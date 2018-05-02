@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Department Managers</h1>
+<br>
+<a href="/employee_data">Back</a>
+<br><br>
+
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>Employee Number</th>
+        <th>Department Number</th>
+        <th>From Date</th>
+        <th>To Date</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for mgr in dept_managers %}
+    <tr>
+        <td>{{ mgr.emp_no }}</td>
+        <td>{{ mgr.dept_no }}</td>
+        <td>{{ mgr.from_date }}</td>
+        <td>{{ mgr.to_date }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
