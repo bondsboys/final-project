@@ -47,12 +47,9 @@ Bootstrap(app)
 login_manager = LoginManager()
 login_manager.setup_app(app)
 logging.basicConfig(level=logging.DEBUG)
-
 user_store = {}
 
-
 def saml_client_for(idp_name=None):
-
     if idp_name not in metadata_url_for:
         raise Exception("Settings for IDP '{}' not found".format(idp_name))
     acs_url = url_for(
@@ -64,9 +61,7 @@ def saml_client_for(idp_name=None):
         idp_name=idp_name,
         _external=True,
         _scheme='https')
-
     rv = requests.get(metadata_url_for[idp_name])
-
     settings = {
         'metadata': {
             'inline': [rv.text],
@@ -186,7 +181,7 @@ def employee_data():
 @login_required
 def current_dept_emps():
     cursor = db.cursor()
-    sql = "SELECT * FROM current_dept_emp LIMIT 50"
+    sql = "SELECT * FROM current_dept_emp"
     cursor.execute(sql)
     current_dept_emps = cursor.fetchall()
     return render_template('current_dept_emps.html', current_dept_emps=current_dept_emps)
@@ -195,7 +190,7 @@ def current_dept_emps():
 @login_required
 def departments():
     cursor = db.cursor()
-    sql = "SELECT * FROM departments LIMIT 50"
+    sql = "SELECT * FROM departments"
     cursor.execute(sql)
     departments = cursor.fetchall()
     return render_template('departments.html', departments=departments)
@@ -204,7 +199,7 @@ def departments():
 @login_required
 def dept_emps():
     cursor = db.cursor()
-    sql = "SELECT * FROM dept_emp LIMIT 50"
+    sql = "SELECT * FROM dept_emp"
     cursor.execute(sql)
     dept_emps = cursor.fetchall()
     return render_template('dept_emps.html', dept_emps=dept_emps)
@@ -213,7 +208,7 @@ def dept_emps():
 @login_required
 def dept_emp_latest_dates():
     cursor = db.cursor()
-    sql = "SELECT * FROM dept_emp_latest_date LIMIT 50"
+    sql = "SELECT * FROM dept_emp_latest_date"
     cursor.execute(sql)
     dept_emp_latest_dates = cursor.fetchall()
     return render_template('dept_emp_latest_dates.html', dept_emp_latest_dates=dept_emp_latest_dates)
@@ -222,7 +217,7 @@ def dept_emp_latest_dates():
 @login_required
 def dept_managers():
     cursor = db.cursor()
-    sql = "SELECT * FROM dept_manager LIMIT 50"
+    sql = "SELECT * FROM dept_manager"
     cursor.execute(sql)
     dept_managers = cursor.fetchall()
     return render_template('dept_managers.html', dept_managers=dept_managers)
@@ -231,7 +226,7 @@ def dept_managers():
 @login_required
 def employees():
     cursor = db.cursor()
-    sql = "SELECT * FROM employees LIMIT 50"
+    sql = "SELECT * FROM employees"
     cursor.execute(sql)
     employees = cursor.fetchall()
     return render_template('employees.html', employees=employees)
@@ -240,7 +235,7 @@ def employees():
 @login_required
 def salaries():
     cursor = db.cursor()
-    sql = "SELECT * FROM salaries LIMIT 50"
+    sql = "SELECT * FROM salaries"
     cursor.execute(sql)
     salaries = cursor.fetchall()
     return render_template('salaries.html', salaries=salaries)
@@ -250,7 +245,7 @@ def salaries():
 @login_required
 def titles():
     cursor = db.cursor()
-    sql = "SELECT * FROM titles LIMIT 50"
+    sql = "SELECT * FROM titles"
     cursor.execute(sql)
     titles = cursor.fetchall()
     return render_template('titles.html',titles=titles)
